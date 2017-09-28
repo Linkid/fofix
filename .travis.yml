@@ -15,6 +15,7 @@ before_install:
         libvorbis-dev
         libogg-dev
         libtheora-dev
+        libswscale-dev
 
 install:
     - pip install pytest
