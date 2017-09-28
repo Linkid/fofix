@@ -12,6 +12,7 @@ before_install:
         libsdl-ttf2.0-dev
         libportmidi-dev
         libsoundtouch-dev
+        libportaudio2
 
 install:
     - pip install pytest
