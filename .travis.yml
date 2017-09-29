@@ -2,20 +2,40 @@ language: python
 python:
     - 2.7
 
+os:
+    - linux
+    - osx
+
 before_install:
-    - sudo apt-get -qq update
-    - sudo apt-get install -y
-        libsdl1.2-dev
-        libsdl-mixer1.2-dev
-        libsdl-image1.2-dev
-        libsdl-ttf2.0-dev
-        libportmidi-dev
-        libsoundtouch-dev
-        portaudio19-dev
-        libvorbis-dev
-        libogg-dev
-        libtheora-dev
-        libswscale-dev
+    - echo $TRAVIS_OS_NAME
+    - |
+      if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
+        sudo apt-get -qq update
+        sudo apt-get install -y
+          libogg-dev
+          libportmidi-dev
+          libsdl-image1.2-dev
+          libsdl-mixer1.2-dev
+          libsdl-ttf2.0-dev
+          libsdl1.2-dev
+          libsoundtouch-dev
+          libswscale-dev
+          libtheora-dev
+          libvorbis-dev
+          portaudio19-dev
+      elif [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+        brew update
+        brew install
+          libogg
+          libtheora
+          libvorbis
+          portaudio
+          portmidi
+          sdl
+          sdl_image
+          sdl_mixer
+          sdl_ttf
+      fi
 
 install:
     - pip install pytest
