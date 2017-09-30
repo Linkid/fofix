@@ -1,0 +1,44 @@
+# https://packaging.python.org/guides/supporting-windows-using-appveyor/
+# https://www.appveyor.com/docs/appveyor-yml/
+
+version: 4.0.0.{build}
+
+environment:
+    global:
+        SDL_AUDIODRIVER: "disk"
+
+    matrix:
+        - PYTHON: "C:\\Python27"
+        - PYTHON: "C:\\Python27-x64"
+
+# No automatic build, just run python tests
+build: off
+
+install:
+    - "powershell appveyor\\install.ps1"
+    - "%PYTHON%/python -m pip install -U pip" # Upgrade pip
+    - "%PYTHON%/python -m pip install cython"
+    - "%PYTHON%/python -m pip install -r requirements.txt"
+
+build_script:
+    # Build the compiled extension
+    -  "%PYTHON%/python setup.py build_ext --inplace --force"
+
+
+before_test:
+    - "%PYTHON%/python -m pip install pytest"
+
+test_script:
+    # Run the project tests
+    #- "%PYTHON%/Scripts/tox.exe -e py27"
+    - "%PYTHON%/Scripts/pytest.exe -e py27"
+
+#after_test:
+#    # If tests are successful, create binary packages for the project.
+#    - "%PYTHON%/python setup.py bdist_wheel"
+#
+#
+#artifacts:
+#    # Archive the generated packages in the ci.appveyor.com build report.
+#    # https://ci.appveyor.com/api/projects/<account>/<project>/artifacts/<artifact_file_path>
+#    - path: dist\*
