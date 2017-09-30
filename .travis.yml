@@ -17,6 +17,8 @@ before_install:
         libvorbis-dev
         portaudio19-dev
         libglib2.0-dev
+        libgl1-mesa-dev
+        libglu1-mesa-dev
 
 install:
     - pip install pytest
