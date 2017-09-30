@@ -16,12 +16,14 @@ before_install:
         libtheora-dev
         libvorbis-dev
         portaudio19-dev
-        python-cerealizer
 
 install:
     - pip install pytest
     - pip install cython
     - pip install -r requirements.txt
+    - echo $TRAVIS_PYTHON_VERSION
+    - echo $TRAVIS_BUILD_DIR
+    - wget https://bitbucket.org/jibalamy/cerealizer/raw/ffbb9283c507c2bb7191bb413722a316e9c0718b/__init__.py2 -O $TRAVIS_HOME/virtualenv/$TRAVIS_PYTHON_VERSION/lib/$TRAVIS_PYTHON_VERSION/site-packages/cerealizer/__init__.py2
     - python setup.py build_ext --inplace --force
 
 script:
