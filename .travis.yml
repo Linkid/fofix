@@ -27,4 +27,4 @@ install:
     - python setup.py build_ext --inplace --force
 
 script:
-    - pytest
+    - pytest fofix
