@@ -21,6 +21,7 @@ before_install:
         libtheora-dev
         libvorbis-dev
         portaudio19-dev
+        mesa-utils
 
 install:
     - glxinfo
