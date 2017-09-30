@@ -15,7 +15,6 @@ environment:
 build: off
 
 install:
-    - "powershell appveyor\\install.ps1"
     - "%PYTHON%/python -m pip install -U pip" # Upgrade pip
     - "%PYTHON%/python -m pip install cython"
     - "%PYTHON%/python -m pip install -r requirements.txt"
