@@ -5,7 +5,7 @@ python:
 before_install:
     - sudo apt-get -qq update
     - sudo apt-get install -y
-        freeglut3-dev
+        #freeglut3-dev
         libgl1-mesa-dev
         libgl1-mesa-glx
         libglib2.0-dev
@@ -38,8 +38,6 @@ before_script:
     - export DISPLAY=:99.0
     - sh -e /etc/init.d/xvfb start
     - sleep 3   # give xvfb some time to start
-#    - export LIBGL_ALWAYS_SOFTWARE=1
-#    - export SDL_VIDEODRIVER=dummy
     - export SDL_AUDIODRIVER=disk
 
 script:
