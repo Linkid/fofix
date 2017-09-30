@@ -16,6 +16,7 @@ before_install:
         libtheora-dev
         libvorbis-dev
         portaudio19-dev
+        python-cerealizer
 
 install:
     - pip install pytest
