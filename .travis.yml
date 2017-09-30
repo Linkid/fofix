@@ -7,6 +7,7 @@ before_install:
     - sudo apt-get install -y
         freeglut3-dev
         libgl1-mesa-dev
+        libgl1-mesa-glx
         libglib2.0-dev
         libglu1-mesa-dev
         libogg-dev
@@ -22,6 +23,7 @@ before_install:
         portaudio19-dev
 
 install:
+    - glxinfo
     - pip install pytest
     - pip install cython
     - pip install -r requirements.txt
