@@ -34,14 +34,15 @@ install:
     - python setup.py build_ext --inplace --force
 
 before_script:
-    - export DISPLAY=:99
-    - export LIBGL_ALWAYS_SOFTWARE=1
+    - export DISPLAY=:99.0
+    - sh -e /etc/init.d/xvfb start
+#    - export LIBGL_ALWAYS_SOFTWARE=1
     - export SDL_VIDEODRIVER=dummy
     - export SDL_AUDIODRIVER=disk
-    - xpra --xvfb="Xorg +extension GLX +extension RANDR +extension RENDER -config `pwd`/test/dummy.xorg.conf -logfile ${HOME}/.xpra/xorg.log"  start :99
-    - sleep 3
+#    - xpra --xvfb="Xorg +extension GLX +extension RANDR +extension RENDER -config `pwd`/test/dummy.xorg.conf -logfile ${HOME}/.xpra/xorg.log"  start :99
+#    - sleep 3
     - glxinfo
-    - cat ${HOME}/.xpra/xorg.log
+#    - cat ${HOME}/.xpra/xorg.log
 
 script:
     - pytest fofix
