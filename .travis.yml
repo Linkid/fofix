@@ -22,6 +22,8 @@ before_install:
         libvorbis-dev
         portaudio19-dev
         mesa-utils
+        xpra
+        xvfb
 
 install:
     - pip install pytest
