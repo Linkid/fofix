@@ -21,9 +21,8 @@ install:
     - pip install pytest
     - pip install cython
     - pip install -r requirements.txt
-    - echo $TRAVIS_PYTHON_VERSION
-    - echo $TRAVIS_BUILD_DIR
-    - export PY_PACKAGES=`pip -version | cut -d' ' -f2`
+    - export PY_PACKAGES=`pip --version | cut -d' ' -f4`
+    - echo $PY_PACKAGES
     - wget https://bitbucket.org/jibalamy/cerealizer/raw/ffbb9283c507c2bb7191bb413722a316e9c0718b/__init__.py2 -O $PY_PACKAGES/cerealizer/__init__.py2
     - python setup.py build_ext --inplace --force
 
