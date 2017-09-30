@@ -36,12 +36,12 @@ install:
 before_script:
     - export DISPLAY=:99.0
     - sh -e /etc/init.d/xvfb start
+    - sleep 3
 #    - export LIBGL_ALWAYS_SOFTWARE=1
-    - export SDL_VIDEODRIVER=dummy
+#    - export SDL_VIDEODRIVER=dummy
     - export SDL_AUDIODRIVER=disk
 #    - xpra --xvfb="Xorg +extension GLX +extension RANDR +extension RENDER -config `pwd`/test/dummy.xorg.conf -logfile ${HOME}/.xpra/xorg.log"  start :99
-#    - sleep 3
-    - glxinfo
+#    - glxinfo
 #    - cat ${HOME}/.xpra/xorg.log
 
 script:
