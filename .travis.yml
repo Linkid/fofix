@@ -39,7 +39,9 @@ before_script:
     - export SDL_VIDEODRIVER=dummy
     - export SDL_AUDIODRIVER=disk
     - xpra --xvfb="Xorg +extension GLX +extension RANDR +extension RENDER -config `pwd`/test/dummy.xorg.conf -logfile ${HOME}/.xpra/xorg.log"  start :99
+    - sleep 3
     - glxinfo
+    - cat ${HOME}/.xpra/xorg.log
 
 script:
     - pytest fofix
