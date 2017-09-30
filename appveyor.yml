@@ -17,7 +17,7 @@ build: off
 install:
     - "%PYTHON%/python -m pip install -U pip" # Upgrade pip
     - "%PYTHON%/python -m pip install cython"
-    - "%PYTHON%/python -m pip install -r requirements.txt"
+    - "%PYTHON%/python -m pip install https://github.com/fofix/fretwork/releases/download/0.2.0/fretwork-0.2.0-cp27-none-win32.whl"
 
 build_script:
     # Build the compiled extension
