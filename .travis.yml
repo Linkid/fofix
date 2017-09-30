@@ -16,6 +16,7 @@ before_install:
         libtheora-dev
         libvorbis-dev
         portaudio19-dev
+        libglib2.0-dev
 
 install:
     - pip install pytest
