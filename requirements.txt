@@ -11,4 +11,3 @@ Pillow
 Cerealizer
 
 PyAudio
-git+https://github.com/Linkid/fretwork.git@python3/print
