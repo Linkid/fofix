@@ -268,8 +268,8 @@ def pc_info(pkg, altnames=[]):
                 sys.stderr.write('(Check that you have the appropriate development package installed.)\n')
             sys.exit(1)
 
-    cflags = shlex.split(subprocess.check_output([pkg_config, '--cflags', pkg], universal_newlines=True)))
-    libs = shlex.split(subprocess.check_output([pkg_config, '--libs', pkg], universal_newlines=True)))
+    cflags = shlex.split(subprocess.check_output([pkg_config, '--cflags', pkg], universal_newlines=True))
+    libs = shlex.split(subprocess.check_output([pkg_config, '--libs', pkg], universal_newlines=True))
 
     # Pick out anything interesting in the cflags and libs, and
     # silently drop the rest.
