@@ -26,7 +26,7 @@ install:
     # hack: cerealizer
     - export PY_PACKAGES=`pip --version | cut -d' ' -f4`
     - wget https://bitbucket.org/jibalamy/cerealizer/raw/ffbb9283c507c2bb7191bb413722a316e9c0718b/__init__.py2 -O $PY_PACKAGES/cerealizer/__init__.py2
-    - git clone -b python3/print https://github.com/Linkid/fretwork.git /tmp/fretwork
+    - git clone -b python3/unicode https://github.com/Linkid/fretwork.git /tmp/fretwork
     - sed 's/subprocess.check_output(\(.*\)))/subprocess.check_output(\1, universal_newlines=True))/g' -i /tmp/fretwork/setup.py
     - pip install /tmp/fretwork/
     - python setup.py build_ext --inplace --force
