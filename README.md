@@ -2,6 +2,7 @@ Frets on Fire X - FoFiX
 =======================
 
 [![Code Health](https://landscape.io/github/fofix/fofix/master/landscape.svg?style=flat)](https://landscape.io/github/fofix/fofix/master)
+[![Build Status](https://travis-ci.org/fofix/fofix.svg?branch=master)](https://travis-ci.org/fofix/fofix)
 [![Documentation Status](https://readthedocs.org/projects/fofix/badge/?version=latest)](http://fofix.readthedocs.io/en/latest/?badge=latest)
 [![Gitter](https://badges.gitter.im/fofix/fofix.svg)](https://gitter.im/fofix/fofix?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=body_badge)
 
@@ -44,6 +45,16 @@ OS-specific dependencies:
     - `pkg-config`
     - python's developpment headers
     - and: `GLU`, `GLib`, `SDL`, `SDL_mixer`, `libogg`, `libvorbisfile`, `libtheora`, `libsoundtouch`, `libswscale` (part of `ffmpeg`) development headers
+
+    About `cerealizer`, you need to reinstall it. You can run those commands for
+    example:
+
+        pip download cerealizer
+        tar jxf Cerealizer*.tar.bz2 -C /tmp/
+        cd /tmp/Cerealizer-*
+        pip install --upgrade .
+        cd -
+        rm -r /tmp/Cerealizer-* Cerealizer-*
 
 
 ### Native modules
