@@ -18,11 +18,7 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-
-import tempfile
 import unittest
-
-from fretwork import log
 
 #from fofix.game.Menu import Choice
 from fofix.core import Config
@@ -38,10 +34,6 @@ def my_callback():
 class MenuTest(unittest.TestCase):
 
     def setUp(self):
-        # set log file
-        fp = tempfile.TemporaryFile()
-        log.setLogfile(fp)
-
         # set config file
         config_file = Version.PROGRAM_UNIXSTYLE_NAME + ".ini"
         self.config = Config.load(config_file, setAsDefault=True)
