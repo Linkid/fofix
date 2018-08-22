@@ -1,4 +1,7 @@
 language: python
+os:
+    - linux
+    - osx
 
 matrix:
     include:
@@ -23,7 +26,19 @@ matrix:
         - env: GIT_COMMIT=0
           python: 3.7
 
+        - env:
+              - GIT_COMMIT=0
+              - PYENV_VERSION=2.7
+          language: generic
+          os: osx
+        - env:
+              - GIT_COMMIT=0
+              - PYENV_VERSION=3.6.2
+          language: generic
+          os: osx
+
     allow_failures:
+        - os: osx
         - env: GIT_COMMIT=0
           python: 3.4
         - env: GIT_COMMIT=0
@@ -33,28 +48,54 @@ matrix:
         - env: GIT_COMMIT=0
           python: 3.7
 
+    exclude:
+        - os: osx
+
 before_install:
     - LD_LIBRARY_PATH=/usr/local/lib64/:$LD_LIBRARY_PATH
     - export LD_LIBRARY_PATH
-    - sudo apt-get -qq update
-    - sudo apt-get install -y
-        libogg-dev
-        libportmidi-dev
-        libsdl-image1.2-dev
-        libsdl-mixer1.2-dev
-        libsdl-ttf2.0-dev
-        libsdl1.2-dev
-        libsoundtouch-dev
-        libswscale-dev
-        libtheora-dev
-        libvorbis-dev
-        mesa-utils
-        portaudio19-dev
-    - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
-    - LD_LIBRARY_PATH=/usr/local/lib64/:$LD_LIBRARY_PATH
-    - export LD_LIBRARY_PATH
-    - sudo apt-get -q update
-    - sudo apt-get install -y gcc-4.9 g++-4.9
+    - echo $TRAVIS_OS_NAME
+    - |
+      if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
+        sudo apt-get -qq update;
+        sudo apt-get install -y \
+          libogg-dev \
+          libportmidi-dev \
+          libsdl-image1.2-dev \
+          libsdl-mixer1.2-dev \
+          libsdl-ttf2.0-dev \
+          libsdl1.2-dev \
+          libsoundtouch-dev \
+          libswscale-dev \
+          libtheora-dev \
+          libvorbis-dev \
+          mesa-utils \
+          portaudio19-dev;
+        sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y;
+        LD_LIBRARY_PATH=/usr/local/lib64/:$LD_LIBRARY_PATH;
+        export LD_LIBRARY_PATH;
+        sudo apt-get -q update;
+        sudo apt-get install -y gcc-4.9 g++-4.9;
+      elif [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+        brew update;
+        brew install \
+          libogg \
+          libtheora \
+          libvorbis \
+          portaudio \
+          portmidi \
+          sdl \
+          sdl_image \
+          sdl_mixer \
+          sdl_ttf;
+        brew install pyenv;
+        brew install pyenv-virtualenv;
+        pyenv install $PYENV_VERSION;
+        export PATH="/Users/travis/.pyenv/shims:${PATH}";
+        pyenv-virtualenv venv;
+        source venv/bin/activate;
+        python --version;
+      fi
 
 install:
     - pip install pytest
