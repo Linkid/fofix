@@ -1,21 +1,26 @@
 language: python
-python:
-    - 2.7
-    - 3.4
-    - 3.5
-    - 3.6
-    - 3.7
 
 matrix:
     include:
-        - env:
+        - name: Git lint
+          env:
               - GIT_COMMIT=1
           install:
               - pip install gitlint
           script:
               - gitlint --commits origin..HEAD
-        - env:
-              - GIT_COMMIT=0
+
+        - env: GIT_COMMIT=0
+          python: 2.7
+        - env: GIT_COMMIT=0
+          python: 3.4
+        - env: GIT_COMMIT=0
+          python: 3.5
+        - env: GIT_COMMIT=0
+          python: 3.6
+        - env: GIT_COMMIT=0
+          python: 3.7
+
     allow_failures:
         - env: GIT_COMMIT=0
           python: 3.4
