@@ -3,21 +3,38 @@ python:
     - 2.7
     - 3.6
 
-before_install:
-    - sudo apt-get -qq update
-    - sudo apt-get install -y
-        libogg-dev
-        libportmidi-dev
-        libsdl-image1.2-dev
-        libsdl-mixer1.2-dev
-        libsdl-ttf2.0-dev
-        libsdl1.2-dev
-        libsoundtouch-dev
-        libswscale-dev
-        libtheora-dev
-        libvorbis-dev
-        portaudio19-dev
-        mesa-utils
+matrix:
+    include:
+        - env:
+              - GIT_COMMIT=1
+          install:
+              - pip install gitlint
+          script:
+              - gitlint --commits origin..HEAD
+        - env:
+            - GIT_COMMIT=0
+          before_install:
+              - LD_LIBRARY_PATH=/usr/local/lib64/:$LD_LIBRARY_PATH
+              - export LD_LIBRARY_PATH
+              - sudo apt-get -qq update
+              - sudo apt-get install -y
+                  libogg-dev
+                  libportmidi-dev
+                  libsdl-image1.2-dev
+                  libsdl-mixer1.2-dev
+                  libsdl-ttf2.0-dev
+                  libsdl1.2-dev
+                  libsoundtouch-dev
+                  libswscale-dev
+                  libtheora-dev
+                  libvorbis-dev
+                  mesa-utils
+                  portaudio19-dev
+              - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
+              - LD_LIBRARY_PATH=/usr/local/lib64/:$LD_LIBRARY_PATH
+              - export LD_LIBRARY_PATH
+              - sudo apt-get -q update
+              - sudo apt-get install -y gcc-4.9 g++-4.9
 
 install:
     - pip install pytest
