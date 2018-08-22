@@ -8,6 +8,7 @@ matrix:
           before_install: echo
           install:
               - pip install gitlint
+          before_script: echo
           script:
               - gitlint --commits origin..HEAD
 
