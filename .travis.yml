@@ -5,10 +5,10 @@ matrix:
         - name: Git lint
           env:
               - GIT_COMMIT=1
-          before_install: echo
+          before_install: continue
           install:
               - pip install gitlint
-          before_script: echo
+          before_script: continue
           script:
               - gitlint --commits origin..HEAD
 
