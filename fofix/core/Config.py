@@ -26,7 +26,7 @@
 import logging
 import os
 from io import StringIO
-from ConfigParser import RawConfigParser
+from configparser import RawConfigParser
 
 from fretwork.unicode import utf8, unicodify
 

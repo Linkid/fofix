@@ -59,6 +59,7 @@ before_install:
 install:
     - pip install pytest
     - pip install cython
+    - pip install configparser
     - pip install -r requirements.txt
     # build ext
     - python setup.py build_ext --inplace --force
