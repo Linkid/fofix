@@ -24,12 +24,12 @@ matrix:
 
         - env:
               - GIT_COMMIT=0
-              - PYENV_VERSION=2.7
+              - PY_VERSION=2.7
           language: generic
           os: osx
         - env:
               - GIT_COMMIT=0
-              - PYENV_VERSION=3.6.2
+              - PY_VERSION=3.6
           language: generic
           os: osx
 
@@ -76,17 +76,27 @@ before_install:
           sdl_image \
           sdl_mixer \
           sdl_ttf;
-        # pyenv
-        brew outdated pyenv || brew upgrade pyenv;
-        brew install pyenv-virtualenv;
-        eval "$(pyenv init -)";
-        eval "$(pyenv virtualenv-init -)";
-        pyenv install $PYENV_VERSION;
-        pyenv virtualenv $PYENV_VERSION venv;
-        pyenv activate venv;
+        # python
+        if [[ "$PY_VERSION" == "3.6" ]]; then
+          brew install python3;
+          pip3 install virtualenv;
+          python3 -m virtualenv venv;
+          source venv/bin/activate;
+        elif [[ "$PY_VERSION" == "2.7" ]]; then
+          python2 -m virtualenv venv;
+          source venv/bin/activate;
+        fi
+        ## pyenv
+        #brew outdated pyenv || brew upgrade pyenv;
+        #brew install pyenv-virtualenv;
+        #eval "$(pyenv init -)";
+        #eval "$(pyenv virtualenv-init -)";
+        #pyenv install $PYENV_VERSION;
+        #pyenv virtualenv $PYENV_VERSION venv;
+        #pyenv activate venv;
 
-        pyenv virtualenvs
-        pyenv version
+        #pyenv virtualenvs
+        #pyenv version
         python --version;
       fi
 
