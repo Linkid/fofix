@@ -103,6 +103,7 @@ before_install:
       fi
 
 install:
+    - pip install --upgrade pip
     - pip install pytest
     - pip install cython
     - pip install configparser
