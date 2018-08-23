@@ -77,6 +77,15 @@ before_install:
           sdl_image \
           sdl_mixer \
           sdl_ttf;
+        # soundtouch
+        wget https://www.surina.net/soundtouch/soundtouch-2.0.0.zip;
+        unzip soundtouch-2.0.0.zip;
+        cd soundtouch;
+        ./bootstrap;
+        ./configure;
+        make;
+        make install;
+        cd ..;
         # pyenv
         brew outdated pyenv || brew upgrade pyenv;
         brew install pyenv-virtualenv;
