@@ -69,7 +69,7 @@ before_install:
           glib \
           libogg \
           theora \
-          #libvorbis \
+          libvorbis \
           portaudio \
           portmidi \
           sdl --universal \
