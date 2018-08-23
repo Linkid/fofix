@@ -18,9 +18,9 @@ matrix:
         - env: GIT_COMMIT=0
           python: 3.6
           os: linux
-        - env: GIT_COMMIT=0
-          python: pypy
-          os: linux
+        #- env: GIT_COMMIT=0
+        #  python: pypy
+        #  os: linux
 
         - env:
               - GIT_COMMIT=0
@@ -37,8 +37,8 @@ matrix:
         - os: osx
         - env: GIT_COMMIT=0
           python: 3.6
-        - env: GIT_COMMIT=0
-          python: pypy
+        #- env: GIT_COMMIT=0
+        #  python: pypy
 
 before_install:
     - LD_LIBRARY_PATH=/usr/local/lib64/:$LD_LIBRARY_PATH
