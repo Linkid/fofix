@@ -85,12 +85,11 @@ before_install:
           #libvorbis \
           portaudio \
           portmidi \
-          sdl \
+          sdl --universal \
           sdl_image \
           sdl_mixer \
           sdl_ttf;
         # pyenv
-        #brew install openssl readline;
         brew outdated pyenv || brew upgrade pyenv;
         brew install pyenv-virtualenv;
         pyenv install $PYENV_VERSION;
