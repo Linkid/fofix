@@ -29,7 +29,7 @@ matrix:
           os: osx
         - env:
               - GIT_COMMIT=0
-              - PY_VERSION=3.6
+              - PY_VERSION=3.6.2
           language: generic
           os: osx
 
@@ -78,11 +78,12 @@ before_install:
           sdl_ttf;
         # python
         #if [[ "$PY_VERSION" == "3.6" ]]; then
-        #  brew install python3;
+        #  pip3 install --upgrade pip
         #  pip3 install virtualenv;
         #  python3 -m virtualenv venv;
         #  source venv/bin/activate;
         #elif [[ "$PY_VERSION" == "2.7" ]]; then
+        #  pip install --upgrade pip
         #  python2 -m virtualenv venv;
         #  source venv/bin/activate;
         #fi
@@ -91,17 +92,17 @@ before_install:
         brew install pyenv-virtualenv;
         eval "$(pyenv init -)";
         eval "$(pyenv virtualenv-init -)";
-        pyenv install $PYENV_VERSION;
-        pyenv virtualenv $PYENV_VERSION venv;
+        pyenv install $PY_VERSION;
+        pyenv virtualenv $PY_VERSION venv;
         pyenv activate venv;
+        pip install --upgrade pip;
 
-        pyenv virtualenvs
-        pyenv version
+        pyenv virtualenvs;
+        pyenv version;
         python --version;
       fi
 
 install:
-    - pip install --upgrade pip
     - pip install pytest
     - pip install cython
     - pip install configparser
