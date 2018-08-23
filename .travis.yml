@@ -74,7 +74,7 @@ before_install:
         # pyenv
         brew outdated pyenv || brew upgrade pyenv;
         brew install pyenv-virtualenv;
-        pyenv install $PYENV_VERSION;
+        CFLAGS="-I$(xcrun --show-sdk-path)/usr/include" pyenv install $PYENV_VERSION;
         export PATH="/Users/travis/.pyenv/shims:${PATH}";
         pyenv-virtualenv venv;
         source venv/bin/activate;
