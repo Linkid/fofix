@@ -81,9 +81,10 @@ before_install:
       elif [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
         brew update;
         brew install \
+          glib \
           libogg \
           theora \
-          libvorbis \
+          #libvorbis \
           portaudio \
           portmidi \
           sdl \
@@ -91,8 +92,8 @@ before_install:
           sdl_mixer \
           sdl_ttf;
         # pyenv
-        brew install openssl readline
-        brew outdated pyenv || brew upgrade pyenv
+        #brew install openssl readline;
+        brew outdated pyenv || brew upgrade pyenv;
         brew install pyenv-virtualenv;
         pyenv install $PYENV_VERSION;
         export PATH="/Users/travis/.pyenv/shims:${PATH}";
