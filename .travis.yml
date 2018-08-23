@@ -25,7 +25,7 @@ matrix:
           python: 3.6
           os: linux
         - env: GIT_COMMIT=0
-          python: 3.7
+          python: 3.7-dev
           os: linux
 
         - env:
@@ -48,7 +48,7 @@ matrix:
         - env: GIT_COMMIT=0
           python: 3.6
         - env: GIT_COMMIT=0
-          python: 3.7
+          python: 3.7-dev
 
     exclude:
         - os: osx
