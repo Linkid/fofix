@@ -81,6 +81,7 @@ before_install:
         brew install pyenv-virtualenv;
         eval "$(pyenv init -)";
         eval "$(pyenv virtualenv-init -)";
+        pyenv install $PYENV_VERSION;
         pyenv virtualenv $PYENV_VERSION venv;
         pyenv activate venv;
 
