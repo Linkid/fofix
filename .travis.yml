@@ -82,7 +82,7 @@ before_install:
         brew update;
         brew install \
           libogg \
-          libtheora \
+          theora \
           libvorbis \
           portaudio \
           portmidi \
