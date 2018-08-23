@@ -112,8 +112,8 @@ install:
 before_script:
     # hack: GUI tests
     - export DISPLAY=:99
-    - if [[ "${TRAVIS_OS_NAME}" == "osx" ]]; then nohup Xvfb :99 &; fi
-    - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then sh -e /etc/init.d/xvfb start; fi
+    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then nohup Xvfb :99 & ; fi
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sh -e /etc/init.d/xvfb start; fi
     - sleep 3   # give xvfb some time to start
     - export SDL_AUDIODRIVER=disk
 
