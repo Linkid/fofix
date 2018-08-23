@@ -16,12 +16,6 @@ matrix:
           python: 2.7
           os: linux
         - env: GIT_COMMIT=0
-          python: 3.4
-          os: linux
-        - env: GIT_COMMIT=0
-          python: 3.5
-          os: linux
-        - env: GIT_COMMIT=0
           python: 3.6
           os: linux
         - env: GIT_COMMIT=0
@@ -42,16 +36,9 @@ matrix:
     allow_failures:
         - os: osx
         - env: GIT_COMMIT=0
-          python: 3.4
-        - env: GIT_COMMIT=0
-          python: 3.5
-        - env: GIT_COMMIT=0
           python: 3.6
         - env: GIT_COMMIT=0
           python: 3.7-dev
-
-    exclude:
-        - os: osx
 
 before_install:
     - LD_LIBRARY_PATH=/usr/local/lib64/:$LD_LIBRARY_PATH
