@@ -26,6 +26,7 @@
 import logging
 import os
 from io import StringIO
+from io import BytesIO
 from configparser import RawConfigParser
 
 from fretwork.unicode import utf8, unicodify
@@ -70,7 +71,7 @@ class MyConfigParser(RawConfigParser):
                 configLines = [line for line in configLines
                                    if line.strip()[0:2] != '//']
                 configData = '\n'.join(configLines)
-                strFp = StringIO(configData)
+                strFp = BytesIO(configData)
                 self._read(strFp, filename)
             except IOError:
                 continue
