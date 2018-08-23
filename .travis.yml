@@ -90,7 +90,9 @@ before_install:
           sdl_image \
           sdl_mixer \
           sdl_ttf;
-        brew install pyenv;
+        # pyenv
+        brew install openssl readline
+        brew outdated pyenv || brew upgrade pyenv
         brew install pyenv-virtualenv;
         pyenv install $PYENV_VERSION;
         export PATH="/Users/travis/.pyenv/shims:${PATH}";
