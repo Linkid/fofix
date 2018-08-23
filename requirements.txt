@@ -6,4 +6,4 @@ PyAudio==0.2.11
 pygame==1.9.3
 PyOpenGL==3.1.0
 PyOpenGL-accelerate==3.1.0
-fretwork==0.3.0 --no-binary fretwork
+#fretwork==0.3.0 --no-binary fretwork
