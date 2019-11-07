@@ -127,7 +127,7 @@ script:
     #- pytest fofix
     - coverage run --source='fofix' --omit='fofix/tests/*' setup.py test
     - coverage html
-    - flake8 --config=setup.cfg
+    - flake8 --config=setup.cfg --count --statistics
 
 notifiations:
     email: false
