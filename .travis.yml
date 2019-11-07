@@ -105,6 +105,7 @@ before_install:
       fi
 
 install:
+    - pip install flake8
     - pip install pytest
     - pip install cython
     - pip install configparser
@@ -121,7 +122,11 @@ before_script:
     - export SDL_AUDIODRIVER=disk
 
 script:
-    - pytest fofix
+    - python setup.py check
+    #- pytest fofix
+    - coverage run --source='fofix' --omit='fofix/tests/*' setup.py test
+    - coverage html
+    - flake8 --config=setup.cfg
 
 notifiations:
     email: false
