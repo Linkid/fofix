@@ -106,6 +106,7 @@ before_install:
 
 install:
     - pip install flake8
+    - pip install coverage
     - pip install pytest
     - pip install cython
     - pip install configparser
