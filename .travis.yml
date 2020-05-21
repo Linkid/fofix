@@ -18,16 +18,12 @@ matrix:
               - export LD_LIBRARY_PATH
               - sudo apt-get -qq update
               - sudo apt-get install -y
-                  libogg-dev
                   libportmidi-dev
                   libsdl-image1.2-dev
                   libsdl-mixer1.2-dev
                   libsdl-ttf2.0-dev
                   libsdl1.2-dev
                   libsoundtouch-dev
-                  libswscale-dev
-                  libtheora-dev
-                  libvorbis-dev
                   mesa-utils
                   portaudio19-dev
               - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
@@ -38,10 +34,7 @@ matrix:
 
 install:
     - pip install pytest
-    - pip install cython
     - pip install -r requirements.txt
-    # build ext
-    - python setup.py build_ext --inplace --force
 
 before_script:
     # hack: GUI tests

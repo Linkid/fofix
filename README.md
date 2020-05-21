@@ -41,17 +41,8 @@ OS-specific dependencies:
     - a C++ compiler
     - `OpenGL`
     - `ffmpeg`
-    - `pkg-config`
     - python's developpment headers
-    - and: `GLU`, `GLib`, `SDL`, `SDL_mixer`, `libogg`, `libvorbisfile`, `libtheora`, `libsoundtouch`, `libswscale` (part of `ffmpeg`) development headers
-
-
-### Native modules
-
-Some parts of FoFiX are written in C or C++. These must be compiled
-before you can start the game from source:
-
-    python setup.py build_ext --inplace --force
+    - and: `GLU`, `SDL`, `SDL_mixer`, `libsoundtouch` development headers
 
 
 ### Generate translations
